@@ -46,9 +46,28 @@ function readMDXFiles<T>(dir: string): { frontmatter: T; content: string }[] {
   })
 }
 
+// Learning order: difficulty first (beginner → intermediate → advanced),
+// then category priority, then alphabetical within each group
+const DIFFICULTY_ORDER: Record<string, number> = { beginner: 0, intermediate: 1, advanced: 2 }
+const CATEGORY_ORDER: Record<string, number> = {
+  "getting-started": 0,
+  "fundamentals": 1,
+  "market-structure": 2,
+  "trading": 3,
+  "analysis": 4,
+}
+
 export function getAllGlossaryItems(): GlossaryItem[] {
   return readMDXFiles<GlossaryFrontmatter>("glossary")
-    .sort((a, b) => a.frontmatter.title.localeCompare(b.frontmatter.title))
+    .sort((a, b) => {
+      const diffA = DIFFICULTY_ORDER[a.frontmatter.difficulty] ?? 9
+      const diffB = DIFFICULTY_ORDER[b.frontmatter.difficulty] ?? 9
+      if (diffA !== diffB) return diffA - diffB
+      const catA = CATEGORY_ORDER[a.frontmatter.category] ?? 9
+      const catB = CATEGORY_ORDER[b.frontmatter.category] ?? 9
+      if (catA !== catB) return catA - catB
+      return a.frontmatter.title.localeCompare(b.frontmatter.title)
+    })
 }
 
 export function getGlossaryItem(slug: string): GlossaryItem | null {
