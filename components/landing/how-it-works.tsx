@@ -40,9 +40,8 @@ export function HowItWorks() {
         </div>
 
         <div className="grid md:grid-cols-3 gap-8 relative">
-          {/* Connecting line (desktop only) */}
-          <div className="hidden md:block absolute top-10 left-[calc(33.3%+1rem)] right-[calc(33.3%+1rem)] h-px bg-border" />
-          <div className="hidden md:block absolute top-10 left-[calc(66.6%+1rem)] right-4 h-px bg-border" />
+          {/* Connecting line across all 3 steps (desktop only) */}
+          <div className="hidden md:block absolute top-10 left-[calc(16.67%+2.5rem)] right-[calc(16.67%+2.5rem)] h-px bg-border" />
 
           {STEPS.map((step) => {
             const Icon = step.icon

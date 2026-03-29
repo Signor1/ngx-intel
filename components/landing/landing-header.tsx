@@ -4,7 +4,6 @@ import Link from "next/link"
 import { TrendingUp } from "lucide-react"
 import { ThemeToggle } from "@/components/layout/theme-toggle"
 import { Button } from "@/components/ui/button"
-import { signIn } from "next-auth/react"
 
 /**
  * Public landing page header — sticky, blurred, with logo, nav, and sign-in CTA.
@@ -34,12 +33,11 @@ export function LandingHeader() {
 
         <div className="flex items-center gap-3">
           <ThemeToggle />
-          <Button
-            onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-            className="rounded-full bg-brand hover:bg-brand-dark text-white"
-          >
-            Get Started Free
-          </Button>
+          <Link href="/auth/signin?callbackUrl=/dashboard">
+            <Button className="rounded-full bg-brand hover:bg-brand-dark text-white">
+              Get Started Free
+            </Button>
+          </Link>
         </div>
       </div>
     </header>

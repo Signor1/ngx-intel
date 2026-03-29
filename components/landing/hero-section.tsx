@@ -1,104 +1,125 @@
 "use client"
 
-import { ArrowRight, TrendingUp, TrendingDown } from "lucide-react"
+import Link from "next/link"
+import { ArrowRight, TrendingUp, TrendingDown, BarChart2, Zap, Shield } from "lucide-react"
 import { Button } from "@/components/ui/button"
-import { signIn } from "next-auth/react"
+import Marquee from "react-fast-marquee"
 
-const MOCK_MOVERS = [
-  { ticker: "ZENITHBANK", price: "₦36.50", change: "+2.11%", up: true },
-  { ticker: "MTNN", price: "₦270.00", change: "+1.85%", up: true },
-  { ticker: "DANGCEM", price: "₦620.00", change: "-0.48%", up: false },
-  { ticker: "GTCO", price: "₦58.90", change: "+3.20%", up: true },
-  { ticker: "ACCESSCORP", price: "₦22.15", change: "-1.10%", up: false },
-  { ticker: "AIRTELAFRI", price: "₦2,350.00", change: "+0.64%", up: true },
+// Real prices from seed data (March 2026)
+const TICKER_DATA = [
+  { ticker: "ZENITHBANK", price: "₦103.00", change: "+1.98%", up: true },
+  { ticker: "GTCO", price: "₦116.10", change: "+0.61%", up: true },
+  { ticker: "MTNN", price: "₦718.00", change: "-0.15%", up: false },
+  { ticker: "DANGCEM", price: "₦810.00", change: "+0.00%", up: true },
+  { ticker: "ACCESSCORP", price: "₦26.00", change: "+0.00%", up: true },
+  { ticker: "AIRTELAFRI", price: "₦2,352.00", change: "+0.34%", up: true },
+  { ticker: "SEPLAT", price: "₦5,500.00", change: "+2.41%", up: true },
+  { ticker: "BUACEMENT", price: "₦185.00", change: "-1.07%", up: false },
+  { ticker: "UBA", price: "₦35.50", change: "+1.43%", up: true },
+  { ticker: "FBNH", price: "₦32.00", change: "-0.62%", up: false },
+  { ticker: "ARADEL", price: "₦680.00", change: "+3.03%", up: true },
+  { ticker: "BUAFOODS", price: "₦430.00", change: "+0.47%", up: true },
+  { ticker: "NB", price: "₦27.50", change: "-1.79%", up: false },
+  { ticker: "PRESCO", price: "₦410.00", change: "+1.23%", up: true },
+  { ticker: "STANBIC", price: "₦90.00", change: "+0.56%", up: true },
 ]
 
-/**
- * Landing page hero section — dark background, headline, live ticker strip.
- */
 export function HeroSection() {
   return (
-    <section className="relative bg-[#0F1117] overflow-hidden">
+    <section className="relative bg-background overflow-hidden">
       {/* Subtle grid pattern */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0 opacity-[0.03] dark:opacity-[0.02]"
         style={{
-          backgroundImage: `linear-gradient(#0A8A5A 1px, transparent 1px), linear-gradient(90deg, #0A8A5A 1px, transparent 1px)`,
+          backgroundImage: `linear-gradient(var(--color-brand) 1px, transparent 1px), linear-gradient(90deg, var(--color-brand) 1px, transparent 1px)`,
           backgroundSize: "60px 60px",
         }}
       />
 
+      {/* Radial glow behind headline */}
+      <div className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-brand/5 rounded-full blur-[120px] pointer-events-none" />
+
       <div className="relative max-w-7xl mx-auto px-6 pt-20 pb-16">
-        {/* Status badge */}
-        <div className="flex justify-center mb-8">
-          <div className="inline-flex items-center gap-2 text-xs font-mono text-[#0A8A5A] border border-[#0A8A5A]/30 bg-[#0A8A5A]/10 rounded-full px-4 py-1.5">
-            <span className="w-1.5 h-1.5 bg-[#0A8A5A] rounded-full animate-pulse" />
-            <span>NGX ASI — 200,000+ POINTS • LIVE DATA</span>
-          </div>
-        </div>
 
         {/* Main headline */}
         <div className="text-center max-w-4xl mx-auto">
-          <h1 className="font-semibold text-5xl md:text-6xl lg:text-7xl leading-[1.1] text-white mb-6">
+          <h1 className="font-bold text-5xl md:text-6xl lg:text-7xl leading-[1.08] text-foreground mb-6 tracking-tight">
             Understand{" "}
-            <span className="text-[#0A8A5A]">Nigerian Stocks.</span>
+            <span className="text-brand relative">
+              Nigerian Stocks.
+              <svg className="absolute -bottom-2 left-0 w-full h-3 text-brand/30" viewBox="0 0 300 12" preserveAspectRatio="none">
+                <path d="M0 8 Q75 0 150 8 Q225 16 300 8" fill="none" stroke="currentColor" strokeWidth="3" />
+              </svg>
+            </span>
             <br />
             Invest Smarter.
           </h1>
 
-          <p className="text-[#9CA3AF] text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
-            Live NGX market data, AI-powered analysis, and Nigeria&apos;s most complete stock education platform — all
-            in one place.
+          <p className="text-muted-foreground text-lg md:text-xl max-w-2xl mx-auto mb-10 leading-relaxed">
+            Live NGX market data, AI-powered analysis, and Nigeria&apos;s most complete stock education platform — all in one place.
           </p>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button
-              size="lg"
-              onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
-              className="rounded-full bg-[#0A8A5A] hover:bg-[#065E3C] text-white px-8 h-12 text-base"
-            >
-              Get Started Free — Sign in with Google
-              <ArrowRight className="w-4 h-4 ml-2" />
-            </Button>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <Link href="/auth/signin?callbackUrl=/dashboard">
+              <Button size="lg" className="rounded-full bg-brand hover:bg-brand-dark text-white px-8 h-13 text-base shadow-lg shadow-brand/20 transition-all hover:shadow-xl hover:shadow-brand/30 hover:-translate-y-0.5">
+                Get Started Free
+                <ArrowRight className="w-4 h-4 ml-2" />
+              </Button>
+            </Link>
+            <Link href="#features" className="text-sm text-muted-foreground hover:text-foreground transition-colors flex items-center gap-1">
+              See what&apos;s inside <ArrowRight className="w-3.5 h-3.5" />
+            </Link>
           </div>
 
-          <p className="text-[#6B7280] text-sm mt-4 font-mono">FREE • NO CREDIT CARD • 200+ NGX STOCKS</p>
+          {/* Trust strip */}
+          <div className="flex items-center justify-center gap-6 mt-8 text-xs text-muted-foreground">
+            <span className="flex items-center gap-1.5"><Shield className="w-3.5 h-3.5 text-brand" /> Free forever</span>
+            <span className="flex items-center gap-1.5"><Zap className="w-3.5 h-3.5 text-brand" /> No credit card</span>
+            <span className="flex items-center gap-1.5"><BarChart2 className="w-3.5 h-3.5 text-brand" /> 150+ NGX stocks</span>
+          </div>
         </div>
 
         {/* Mock dashboard preview */}
         <div className="mt-16 relative">
-          <div className="bg-[#1A1D23] border border-[#2D3139] rounded-2xl p-4 max-w-3xl mx-auto shadow-2xl">
+          {/* Glow behind card */}
+          <div className="absolute inset-0 bg-brand/5 rounded-3xl blur-2xl scale-95 pointer-events-none" />
+
+          <div className="relative bg-card border border-border rounded-2xl p-4 max-w-3xl mx-auto shadow-2xl">
+            {/* Window chrome */}
             <div className="flex items-center gap-2 mb-4">
-              <div className="w-3 h-3 rounded-full bg-red-500/70" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/70" />
-              <div className="w-3 h-3 rounded-full bg-green-500/70" />
-              <span className="ml-3 text-xs font-mono text-[#6B7280]">NGX INTEL — DASHBOARD</span>
+              <div className="w-3 h-3 rounded-full bg-red-400/80" />
+              <div className="w-3 h-3 rounded-full bg-yellow-400/80" />
+              <div className="w-3 h-3 rounded-full bg-green-400/80" />
+              <span className="ml-3 text-xs font-mono text-muted-foreground">NGX INTEL — DASHBOARD</span>
             </div>
+
+            {/* Metric cards */}
             <div className="grid grid-cols-3 gap-3 mb-3">
               {[
-                { label: "ASI VALUE", value: "201,432.18", change: "+1.24%", up: true },
-                { label: "MKT CAP", value: "₦56.2T", change: "+0.82%", up: true },
-                { label: "VOLUME", value: "523.4M", change: "-3.1%", up: false },
+                { label: "ASI VALUE", value: "105,234.48", change: "+0.40%", up: true },
+                { label: "MKT CAP", value: "₦64.8T", change: "+0.38%", up: true },
+                { label: "VOLUME", value: "423.1M", change: "-5.2%", up: false },
               ].map((stat) => (
-                <div key={stat.label} className="bg-[#0F1117] rounded-xl p-3">
-                  <p className="text-[10px] font-mono text-[#6B7280] mb-1">{stat.label}</p>
-                  <p className="text-sm font-semibold text-white">{stat.value}</p>
-                  <p className={`text-xs font-mono ${stat.up ? "text-[#16A34A]" : "text-[#DC2626]"}`}>
-                    {stat.change}
-                  </p>
+                <div key={stat.label} className="bg-secondary/60 rounded-xl p-3">
+                  <p className="text-[10px] font-mono text-muted-foreground mb-1">{stat.label}</p>
+                  <p className="text-sm font-semibold text-foreground">{stat.value}</p>
+                  <p className={`text-xs font-mono ${stat.up ? "text-gain" : "text-loss"}`}>{stat.change}</p>
                 </div>
               ))}
             </div>
-            <div className="bg-[#0F1117] rounded-xl p-3">
+
+            {/* Movers */}
+            <div className="bg-secondary/60 rounded-xl p-3">
               <div className="flex items-center justify-between mb-2">
-                <span className="text-[10px] font-mono text-[#6B7280]">TOP MOVERS TODAY</span>
-                <span className="text-[10px] font-mono text-[#0A8A5A]">VIEW ALL →</span>
+                <span className="text-[10px] font-mono text-muted-foreground">TOP MOVERS TODAY</span>
+                <span className="text-[10px] font-mono text-brand">VIEW ALL →</span>
               </div>
               <div className="flex gap-2 flex-wrap">
-                {MOCK_MOVERS.map((stock) => (
-                  <div key={stock.ticker} className="flex items-center gap-1.5 bg-[#1A1D23] rounded-lg px-2 py-1">
-                    <span className="text-[10px] font-mono text-white">{stock.ticker}</span>
-                    <span className={`text-[10px] font-mono ${stock.up ? "text-[#16A34A]" : "text-[#DC2626]"}`}>
+                {TICKER_DATA.slice(0, 6).map((stock) => (
+                  <div key={stock.ticker} className="flex items-center gap-1.5 bg-background/80 border border-border/50 rounded-lg px-2.5 py-1.5">
+                    <span className="text-[11px] font-mono font-semibold text-foreground">{stock.ticker}</span>
+                    <span className="text-[11px] font-mono text-muted-foreground">{stock.price}</span>
+                    <span className={`text-[11px] font-mono font-semibold ${stock.up ? "text-gain" : "text-loss"}`}>
                       {stock.change}
                     </span>
                   </div>
@@ -109,20 +130,20 @@ export function HeroSection() {
         </div>
       </div>
 
-      {/* Market Ticker Strip */}
-      <div className="border-t border-[#2D3139] bg-[#0A0D12] py-3 overflow-hidden">
-        <div className="flex animate-marquee gap-12 whitespace-nowrap">
-          {[...MOCK_MOVERS, ...MOCK_MOVERS, ...MOCK_MOVERS].map((stock, i) => (
-            <div key={i} className="flex items-center gap-2 shrink-0">
-              <span className="text-xs font-mono text-[#9CA3AF]">{stock.ticker}</span>
-              <span className="text-xs font-mono text-white">{stock.price}</span>
-              <span className={`text-xs font-mono flex items-center gap-0.5 ${stock.up ? "text-[#16A34A]" : "text-[#DC2626]"}`}>
-                {stock.up ? <TrendingUp className="w-3 h-3" /> : <TrendingDown className="w-3 h-3" />}
+      {/* Animated Marquee Ticker Strip */}
+      <div className="border-t border-border bg-secondary/30">
+        <Marquee speed={40} gradient={true} gradientColor="var(--background)" gradientWidth={80} pauseOnHover={true} className="py-3">
+          {TICKER_DATA.map((stock, i) => (
+            <div key={i} className="flex items-center gap-2.5 mx-6">
+              <span className="text-sm font-mono font-semibold text-foreground">{stock.ticker}</span>
+              <span className="text-sm font-mono text-muted-foreground">{stock.price}</span>
+              <span className={`text-sm font-mono font-semibold flex items-center gap-0.5 ${stock.up ? "text-gain" : "text-loss"}`}>
+                {stock.up ? <TrendingUp className="w-3.5 h-3.5" /> : <TrendingDown className="w-3.5 h-3.5" />}
                 {stock.change}
               </span>
             </div>
           ))}
-        </div>
+        </Marquee>
       </div>
     </section>
   )

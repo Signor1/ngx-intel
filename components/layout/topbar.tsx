@@ -1,9 +1,9 @@
 import { auth } from "@/auth"
 import { ThemeToggle } from "@/components/layout/theme-toggle"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
+import { ProfileDropdown } from "@/components/layout/profile-dropdown"
 
 /**
- * Dashboard top bar — market status, user avatar.
+ * Dashboard top bar — market status, theme toggle, user profile dropdown.
  * Server component so it can read the session without a client boundary.
  */
 export async function TopBar() {
@@ -41,12 +41,13 @@ export async function TopBar() {
       <div className="flex items-center gap-3">
         <ThemeToggle />
         {user && (
-          <Avatar className="w-8 h-8">
-            <AvatarImage src={user.image ?? undefined} alt={user.name ?? "User"} />
-            <AvatarFallback className="bg-brand text-white text-xs font-semibold">
-              {user.name?.charAt(0).toUpperCase() ?? "U"}
-            </AvatarFallback>
-          </Avatar>
+          <ProfileDropdown
+            user={{
+              name: user.name,
+              email: user.email,
+              image: user.image,
+            }}
+          />
         )}
       </div>
     </header>

@@ -7,7 +7,7 @@ import {
   BookOpen,
   Brain,
   Calendar,
-  Clock,
+  FileText,
   History,
   LayoutDashboard,
   LogOut,
@@ -24,7 +24,7 @@ const NAV_ITEMS = [
   { href: "/dashboard/sectors", icon: BarChart2, label: "Sectors" },
   { href: "/dashboard/learn", icon: BookOpen, label: "Learn" },
   { href: "/dashboard/history", icon: History, label: "History" },
-  { href: "/dashboard/analysis", icon: Clock, label: "Analysis" },
+  { href: "/dashboard/analysis", icon: FileText, label: "Analysis" },
   { href: "/dashboard/chat", icon: Brain, label: "AI Chat" },
   { href: "/dashboard/watchlist", icon: Star, label: "Watchlist" },
 ]

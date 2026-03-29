@@ -2,7 +2,7 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
-@custom-variant dark (&:is(.dark *));
+@custom-variant dark (&:where(.dark, .dark *));
 
 @theme inline {
   --color-background: var(--background);
@@ -80,13 +80,13 @@
   --chart-4: #DC2626;
   --chart-5: #F59E0B;
 
-  --sidebar: #0F1117;
-  --sidebar-foreground: #F9FAFB;
+  --sidebar: #ffffff;
+  --sidebar-foreground: #111827;
   --sidebar-primary: #0A8A5A;
   --sidebar-primary-foreground: #ffffff;
-  --sidebar-accent: #1A1D23;
-  --sidebar-accent-foreground: #F9FAFB;
-  --sidebar-border: #2D3139;
+  --sidebar-accent: #F3F4F6;
+  --sidebar-accent-foreground: #111827;
+  --sidebar-border: #E5E7EB;
   --sidebar-ring: #0A8A5A;
 
   /* NGX brand tokens */
@@ -144,4 +144,120 @@
   html {
     @apply font-sans;
   }
+}
+
+/* MDX content typography — used on learn/[slug] and analysis/[slug] pages */
+.mdx-content {
+  font-size: 1rem;
+  line-height: 1.9;
+  color: var(--foreground);
+}
+
+.mdx-content h2 {
+  font-size: 1.375rem;
+  font-weight: 700;
+  margin-top: 2.5rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.5rem;
+  border-bottom: 1px solid var(--border);
+  letter-spacing: -0.01em;
+}
+
+.mdx-content h3 {
+  font-size: 1.125rem;
+  font-weight: 600;
+  margin-top: 2rem;
+  margin-bottom: 0.75rem;
+  letter-spacing: -0.01em;
+}
+
+.mdx-content h4 {
+  font-size: 1rem;
+  font-weight: 600;
+  margin-top: 1.5rem;
+  margin-bottom: 0.5rem;
+}
+
+.mdx-content p {
+  margin-bottom: 1.25rem;
+  line-height: 1.9;
+}
+
+.mdx-content ul,
+.mdx-content ol {
+  margin-bottom: 1.25rem;
+  padding-left: 1.5rem;
+}
+
+.mdx-content li {
+  margin-bottom: 0.5rem;
+  line-height: 1.8;
+}
+
+.mdx-content li::marker {
+  color: var(--color-brand);
+}
+
+.mdx-content strong {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.mdx-content a {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+.mdx-content a:hover {
+  text-decoration: underline;
+}
+
+.mdx-content blockquote {
+  border-left: 3px solid var(--color-brand);
+  background: var(--color-brand) / 0.05;
+  padding: 0.75rem 1rem;
+  margin: 1.5rem 0;
+  border-radius: 0 0.5rem 0.5rem 0;
+  font-style: normal;
+}
+
+.mdx-content code {
+  background: var(--secondary);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.875rem;
+}
+
+.mdx-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 1.5rem 0;
+  font-size: 0.9375rem;
+}
+
+.mdx-content th {
+  text-align: left;
+  padding: 0.625rem 0.75rem;
+  border-bottom: 2px solid var(--border);
+  font-weight: 600;
+  font-size: 0.875rem;
+}
+
+.mdx-content td {
+  padding: 0.625rem 0.75rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.mdx-content tr:last-child td {
+  border-bottom: none;
+}
+
+.mdx-content hr {
+  border: none;
+  border-top: 1px solid var(--border);
+  margin: 2.5rem 0;
+}
+
+.mdx-content img {
+  border-radius: 0.75rem;
+  margin: 1.5rem 0;
 }

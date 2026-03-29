@@ -23,6 +23,9 @@ export const metadata: Metadata = {
     description: "Understand Nigerian Stocks. Invest Smarter.",
     type: "website",
   },
+  icons: {
+    icon: "/trending-up.png"
+  }
 }
 
 export default function RootLayout({
