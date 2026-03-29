@@ -2,21 +2,21 @@ import { ArrowUpRight, ArrowDownRight, TrendingUp, Activity, DollarSign, BarChar
 import { Card } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 
-// Mock data — will be replaced by /api/market/summary
+// Data as of March 27, 2026 — sources: NGX Group, Nairametrics
 const METRICS = [
   {
     label: "ASI Today",
-    value: "201,432.18",
-    change: "+1,243.55",
-    changePercent: "+0.62%",
+    value: "200,913.06",
+    change: "+632.44",
+    changePercent: "+0.32%",
     up: true,
     icon: TrendingUp,
   },
   {
     label: "Market Cap",
-    value: "₦56.2T",
-    change: "+₦341B",
-    changePercent: "+0.61%",
+    value: "₦129T",
+    change: "+₦360B",
+    changePercent: "+0.28%",
     up: true,
     icon: DollarSign,
   },
@@ -39,19 +39,19 @@ const METRICS = [
 ]
 
 const TOP_GAINERS = [
-  { ticker: "GTCO", name: "Guaranty Trust", price: "₦58.90", change: "+3.20%" },
-  { ticker: "ZENITHBANK", name: "Zenith Bank", price: "₦36.50", change: "+2.11%" },
-  { ticker: "MTNN", name: "MTN Nigeria", price: "₦270.00", change: "+1.85%" },
-  { ticker: "AIRTELAFRI", name: "Airtel Africa", price: "₦2,350.00", change: "+0.64%" },
-  { ticker: "WAPCO", name: "Lafarge Africa", price: "₦42.10", change: "+0.48%" },
+  { ticker: "ARADEL", name: "Aradel Holdings", price: "₦1,300.40", change: "+2.15%" },
+  { ticker: "SEPLAT", name: "Seplat Energy", price: "₦9,099.90", change: "+1.83%" },
+  { ticker: "ZENITHBANK", name: "Zenith Bank", price: "₦107.50", change: "+1.42%" },
+  { ticker: "UBA", name: "United Bank for Africa", price: "₦35.50", change: "+1.43%" },
+  { ticker: "GTCO", name: "Guaranty Trust", price: "₦111.00", change: "+0.91%" },
 ]
 
 const TOP_LOSERS = [
-  { ticker: "DANGCEM", name: "Dangote Cement", price: "₦620.00", change: "-0.48%" },
-  { ticker: "ACCESSCORP", name: "Access Holdings", price: "₦22.15", change: "-1.10%" },
-  { ticker: "NB", name: "Nigerian Breweries", price: "₦28.60", change: "-1.38%" },
-  { ticker: "BUACEMENT", name: "BUA Cement", price: "₦118.00", change: "-1.67%" },
-  { ticker: "TRANSCORP", name: "Transcorp", price: "₦14.40", change: "-2.03%" },
+  { ticker: "NB", name: "Nigerian Breweries", price: "₦71.95", change: "-1.85%" },
+  { ticker: "BUACEMENT", name: "BUA Cement", price: "₦185.00", change: "-0.54%" },
+  { ticker: "FBNH", name: "First Bank Holdings", price: "₦32.00", change: "-0.62%" },
+  { ticker: "MTNN", name: "MTN Nigeria", price: "₦701.10", change: "-0.27%" },
+  { ticker: "DANGCEM", name: "Dangote Cement", price: "₦810.00", change: "-0.12%" },
 ]
 
 const SECTORS = [

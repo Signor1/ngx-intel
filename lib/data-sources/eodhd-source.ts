@@ -403,10 +403,10 @@ export class EODHDSource implements NGXDataSource {
 // ─── Fallback market summary ─────────────────────────────────────────────────
 
 const FALLBACK_SUMMARY: MarketSummary = {
-  asiValue: 105234.48,
-  asiChange: 423.15,
-  asiChangePercent: 0.40,
-  marketCap: 64800000000000,
+  asiValue: 200913.06,
+  asiChange: 632.44,
+  asiChangePercent: 0.32,
+  marketCap: 129000000000000,
   volume: 523400000,
   deals: 8421,
   gainers: 38,
