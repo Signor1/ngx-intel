@@ -54,7 +54,7 @@ export default async function LearnTermPage({ params }: { params: Promise<{ slug
               {sameCategory.map((i) => (
                 <Link
                   key={i.frontmatter.slug}
-                  href={`/dashboard/learn/${i.frontmatter.slug}`}
+                  href={`/learn/${i.frontmatter.slug}`}
                   className="block px-3 py-1.5 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary rounded-md transition-colors"
                 >
                   {i.frontmatter.title.replace(/^What is (a |an |the )?/i, "").replace(/\?$/, "")}
@@ -118,7 +118,7 @@ export default async function LearnTermPage({ params }: { params: Promise<{ slug
             <h3 className="font-semibold mb-4">Related Terms</h3>
             <div className="flex flex-wrap gap-2">
               {frontmatter.related.map((relSlug) => (
-                <Link key={relSlug} href={`/dashboard/learn/${relSlug}`}>
+                <Link key={relSlug} href={`/learn/${relSlug}`}>
                   <Badge variant="secondary" className="text-sm cursor-pointer hover:bg-brand/10 hover:text-brand transition-colors px-3 py-1.5">
                     {relSlug.replace(/-/g, " ")}
                   </Badge>
