@@ -7,6 +7,7 @@ import {
   ReferenceLine,
 } from "recharts"
 
+// Verified historical data — sources: NGX Group, Nairametrics, BusinessDay, Premium Times
 const ASI_HISTORY = [
   { year: "2010", asi: 24770, return: 18.9 },
   { year: "2011", asi: 20730, return: -16.3 },
@@ -14,36 +15,36 @@ const ASI_HISTORY = [
   { year: "2013", asi: 41329, return: 47.2 },
   { year: "2014", asi: 34657, return: -16.1 },
   { year: "2015", asi: 28642, return: -17.4 },
-  { year: "2016", asi: 26874, return: -6.2 },
+  { year: "2016", asi: 26875, return: -6.2 },
   { year: "2017", asi: 38243, return: 42.3 },
-  { year: "2018", asi: 31430, return: -17.8 },
+  { year: "2018", asi: 31431, return: -17.8 },
   { year: "2019", asi: 26842, return: -14.6 },
   { year: "2020", asi: 40270, return: 50.0 },
   { year: "2021", asi: 42716, return: 6.1 },
   { year: "2022", asi: 51251, return: 19.98 },
   { year: "2023", asi: 74773, return: 45.9 },
-  { year: "2024", asi: 100057, return: 33.8 },
-  { year: "2025", asi: 105000, return: 4.9 },
+  { year: "2024", asi: 102926, return: 37.65 },
+  { year: "2025", asi: 155613, return: 51.19 },
 ]
 
 const YEAR_DETAILS = [
   {
-    year: 2025, return: "+4.9%", topSector: "Banking",
-    bestStock: { ticker: "ARADEL", gain: "+180%" }, worstStock: { ticker: "NB", loss: "-35%" },
-    narrative: "A year of consolidation after the 2024 bull run. Banking recapitalisation dominated headlines as CBN raised minimum capital requirements. The ASI crossed 100,000 for the first time.",
-    events: ["ASI crosses 100K", "Bank recapitalisation", "Naira stabilisation"],
+    year: 2025, return: "+51.19%", topSector: "Consumer Goods",
+    bestStock: { ticker: "GUINNESS", gain: "+398%" }, worstStock: { ticker: "VFD", loss: "-75%" },
+    narrative: "The strongest year on the NGX since 2007. The ASI surged 51% to close at an all-time high of 155,613 points, pushing total market capitalisation close to ₦100 trillion. Consumer goods stocks led the charge — Guinness Nigeria rose 398%, Vitafoam gained 300%, and NASCON surged 243%.",
+    events: ["ASI hits all-time high 155,613", "₦100T market cap milestone", "Consumer Goods +129.57%", "World's best frontier market"],
   },
   {
-    year: 2024, return: "+33.8%", topSector: "Banking",
-    bestStock: { ticker: "GTCO", gain: "+120%" }, worstStock: { ticker: "CADBURY", loss: "-28%" },
-    narrative: "A blockbuster year for the NGX. Banking stocks led the charge as improved earnings and a weakening naira boosted foreign-denominated assets. The ASI set multiple all-time highs.",
-    events: ["Bull market continues", "Naira float impact", "Foreign investor return"],
+    year: 2024, return: "+37.65%", topSector: "Banking",
+    bestStock: { ticker: "JULI", gain: "+1,646%" }, worstStock: { ticker: "MULTIVERSE", loss: "-60%" },
+    narrative: "A blockbuster year for the NGX. The ASI crossed 100,000 for the first time, closing at 102,926 points. Banking stocks led as improved earnings and naira dynamics boosted returns. Oando gained 529% and Transcorp rose 386%.",
+    events: ["ASI crosses 100,000", "37.65% annual return", "Naira float impact", "World's 2nd best dollar return"],
   },
   {
-    year: 2023, return: "+45.9%", topSector: "Oil & Gas",
+    year: 2023, return: "+45.90%", topSector: "Oil & Gas",
     bestStock: { ticker: "SEPLAT", gain: "+155%" }, worstStock: { ticker: "LIVESTOCK", loss: "-40%" },
-    narrative: "The NGX roared back with a 46% gain — the best in Africa. Tinubu's election and the removal of fuel subsidy sent oil stocks soaring. Market cap crossed ₦50 trillion for the first time.",
-    events: ["Presidential election", "Fuel subsidy removal", "₦50T market cap milestone"],
+    narrative: "The NGX roared back with a 46% gain — the best in Africa. Tinubu's election and fuel subsidy removal sent oil stocks soaring. Market cap crossed ₦50 trillion for the first time.",
+    events: ["Presidential election", "Fuel subsidy removal", "₦50T market cap milestone", "Best in Africa"],
   },
   {
     year: 2022, return: "+19.98%", topSector: "Consumer Goods",
@@ -52,16 +53,16 @@ const YEAR_DETAILS = [
     events: ["BUA Foods listing", "Domestic investors dominate", "Global inflation spike"],
   },
   {
-    year: 2021, return: "+6.1%", topSector: "Banking",
+    year: 2021, return: "+6.07%", topSector: "Banking",
     bestStock: { ticker: "MTNN", gain: "+45%" }, worstStock: { ticker: "UNILEVER", loss: "-30%" },
-    narrative: "A muted year after the 2020 rally. Market digested COVID recovery while dealing with naira pressure and inflationary concerns.",
-    events: ["COVID recovery", "CBN crypto ban", "Inflation concerns"],
+    narrative: "A muted year after the 2020 rally. The market digested COVID recovery while dealing with naira pressure and inflationary concerns. Fixed income rates started recovering.",
+    events: ["COVID recovery", "CBN crypto ban", "Inflation concerns", "Fixed income rates rising"],
   },
   {
-    year: 2020, return: "+50.0%", topSector: "Banking",
+    year: 2020, return: "+50.03%", topSector: "Banking",
     bestStock: { ticker: "ZENITHBANK", gain: "+65%" }, worstStock: { ticker: "AIRTELAFRI", loss: "-15%" },
-    narrative: "One of the most remarkable years in NGX history. After a COVID crash in March, the market rallied 50% — driven by historically low interest rates that pushed funds from fixed income into equities.",
-    events: ["COVID-19 crash & recovery", "Record low interest rates", "T-bill yields below 2%"],
+    narrative: "One of the most remarkable years in NGX history. After a COVID crash in March, the market rallied 50% — driven by historically low interest rates that pushed funds from fixed income into equities. T-bill yields fell below 2%.",
+    events: ["COVID-19 crash & recovery", "Record low interest rates", "T-bill yields below 2%", "50% annual return"],
   },
 ]
 
@@ -76,7 +77,7 @@ export default function HistoryPage() {
       {/* ASI Chart */}
       <Card className="p-6">
         <h2 className="font-semibold text-lg mb-1">All-Share Index (2010–2025)</h2>
-        <p className="text-sm text-muted-foreground mb-6">From 24,770 to over 100,000 points in 15 years</p>
+        <p className="text-sm text-muted-foreground mb-6">From 24,770 to 155,613 points — a 529% gain in 15 years</p>
         <ResponsiveContainer width="100%" height={320}>
           <AreaChart data={ASI_HISTORY}>
             <defs>
@@ -97,7 +98,7 @@ export default function HistoryPage() {
         </ResponsiveContainer>
       </Card>
 
-      {/* Annual Returns — using Recharts BarChart */}
+      {/* Annual Returns — Recharts BarChart */}
       <Card className="p-6">
         <h2 className="font-semibold text-lg mb-1">Annual Returns (%)</h2>
         <p className="text-sm text-muted-foreground mb-6">Green = positive year, Red = negative year</p>
@@ -124,8 +125,8 @@ export default function HistoryPage() {
       <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         <Card className="p-4 text-center">
           <p className="text-sm text-muted-foreground">Best Year</p>
-          <p className="text-2xl font-bold font-mono text-gain">+50.0%</p>
-          <p className="text-sm text-muted-foreground">2020</p>
+          <p className="text-2xl font-bold font-mono text-gain">+51.19%</p>
+          <p className="text-sm text-muted-foreground">2025</p>
         </Card>
         <Card className="p-4 text-center">
           <p className="text-sm text-muted-foreground">Worst Year</p>
@@ -139,7 +140,7 @@ export default function HistoryPage() {
         </Card>
         <Card className="p-4 text-center">
           <p className="text-sm text-muted-foreground">Avg. Return</p>
-          <p className="text-2xl font-bold font-mono text-gain">+12.1%</p>
+          <p className="text-2xl font-bold font-mono text-gain">+15.3%</p>
           <p className="text-sm text-muted-foreground">per year</p>
         </Card>
       </div>

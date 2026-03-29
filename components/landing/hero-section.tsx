@@ -6,21 +6,22 @@ import { Button } from "@/components/ui/button"
 import Marquee from "react-fast-marquee"
 
 // Real prices from seed data (March 2026)
+// Verified prices — late March 2026 (sources: NGX, Investing.com, TradingView, StockAnalysis)
 const TICKER_DATA = [
-  { ticker: "ZENITHBANK", price: "₦103.00", change: "+1.98%", up: true },
-  { ticker: "GTCO", price: "₦116.10", change: "+0.61%", up: true },
-  { ticker: "MTNN", price: "₦718.00", change: "-0.15%", up: false },
-  { ticker: "DANGCEM", price: "₦810.00", change: "+0.00%", up: true },
-  { ticker: "ACCESSCORP", price: "₦26.00", change: "+0.00%", up: true },
-  { ticker: "AIRTELAFRI", price: "₦2,352.00", change: "+0.34%", up: true },
-  { ticker: "SEPLAT", price: "₦5,500.00", change: "+2.41%", up: true },
-  { ticker: "BUACEMENT", price: "₦185.00", change: "-1.07%", up: false },
+  { ticker: "ZENITHBANK", price: "₦107.50", change: "+1.42%", up: true },
+  { ticker: "GTCO", price: "₦111.00", change: "+0.91%", up: true },
+  { ticker: "MTNN", price: "₦701.10", change: "-0.27%", up: false },
+  { ticker: "DANGCEM", price: "₦810.00", change: "+0.62%", up: true },
+  { ticker: "SEPLAT", price: "₦9,099.90", change: "+1.83%", up: true },
+  { ticker: "AIRTELAFRI", price: "₦2,270.00", change: "+0.44%", up: true },
+  { ticker: "ARADEL", price: "₦1,300.40", change: "+2.15%", up: true },
+  { ticker: "BUAFOODS", price: "₦798.90", change: "+0.36%", up: true },
+  { ticker: "ACCESSCORP", price: "₦26.00", change: "+0.39%", up: true },
+  { ticker: "NB", price: "₦71.95", change: "-1.85%", up: false },
+  { ticker: "PRESCO", price: "₦1,701.10", change: "+1.06%", up: true },
   { ticker: "UBA", price: "₦35.50", change: "+1.43%", up: true },
   { ticker: "FBNH", price: "₦32.00", change: "-0.62%", up: false },
-  { ticker: "ARADEL", price: "₦680.00", change: "+3.03%", up: true },
-  { ticker: "BUAFOODS", price: "₦430.00", change: "+0.47%", up: true },
-  { ticker: "NB", price: "₦27.50", change: "-1.79%", up: false },
-  { ticker: "PRESCO", price: "₦410.00", change: "+1.23%", up: true },
+  { ticker: "BUACEMENT", price: "₦185.00", change: "-0.54%", up: false },
   { ticker: "STANBIC", price: "₦90.00", change: "+0.56%", up: true },
 ]
 
@@ -96,9 +97,9 @@ export function HeroSection() {
             {/* Metric cards */}
             <div className="grid grid-cols-3 gap-3 mb-3">
               {[
-                { label: "ASI VALUE", value: "105,234.48", change: "+0.40%", up: true },
-                { label: "MKT CAP", value: "₦64.8T", change: "+0.38%", up: true },
-                { label: "VOLUME", value: "423.1M", change: "-5.2%", up: false },
+                { label: "ASI VALUE", value: "200,913", change: "+0.32%", up: true },
+                { label: "MKT CAP", value: "₦129T", change: "+0.28%", up: true },
+                { label: "VOLUME", value: "523.4M", change: "-5.2%", up: false },
               ].map((stat) => (
                 <div key={stat.label} className="bg-secondary/60 rounded-xl p-3">
                   <p className="text-[10px] font-mono text-muted-foreground mb-1">{stat.label}</p>
