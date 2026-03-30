@@ -117,9 +117,9 @@ export function LearnClient({ items }: { items: GlossaryFrontmatter[] }) {
               {grouped[activeCategory].map((item) => (
                 <Link
                   key={item.slug}
-                  href={`/learn/${item.slug}`}
+                  href={`/dashboard/learn/${item.slug}`}
                   className={`block px-3 py-1.5 text-sm rounded-md transition-colors ${
-                    pathname === `/learn/${item.slug}`
+                    pathname === `/dashboard/learn/${item.slug}`
                       ? "bg-brand/10 text-brand font-medium"
                       : "text-muted-foreground hover:text-foreground hover:bg-secondary"
                   }`}
@@ -197,7 +197,7 @@ export function LearnClient({ items }: { items: GlossaryFrontmatter[] }) {
 
 function TermRow({ item }: { item: GlossaryFrontmatter }) {
   return (
-    <Link href={`/learn/${item.slug}`} className="block group">
+    <Link href={`/dashboard/learn/${item.slug}`} className="block group">
       <div className="flex items-center gap-4 px-4 py-3.5 rounded-xl border border-transparent hover:border-brand/30 hover:bg-secondary/30 transition-all">
         <BookOpen className="w-5 h-5 text-brand shrink-0" />
         <div className="flex-1 min-w-0">
